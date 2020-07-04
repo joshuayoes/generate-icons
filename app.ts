@@ -1,6 +1,8 @@
 import createTest from "./partials/createTest.ts";
 import createComponent from "./partials/createComponent.ts";
 import { parse } from "https://deno.land/std/flags/mod.ts";
+import getIcons from "./partials/getIcons.ts";
+import createStory from "./partials/createStory/index.ts";
 
 // Extract command line arguments passed when running command
 const { _: args } = parse(Deno.args);
@@ -20,6 +22,12 @@ const iconName = `${filename}`;
 const iconDirectory = "./component-library/src/components/Icons";
 const testOutputPath = iconDirectory + `/__tests__/${iconName}.test.tsx`;
 const componentOutputPath = iconDirectory + `/${iconName}.tsx`;
+const storyOutputPath = iconDirectory + `/_.stories.tsx`;
 
+// Get get all icon files from iconDirectory;
+const icons = await getIcons(iconDirectory);
+
+// Generate icon files
 createTest(iconName, testOutputPath);
 createComponent(iconName, componentOutputPath);
+createStory(icons, storyOutputPath);
