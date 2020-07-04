@@ -2,7 +2,7 @@ import createTest from "./partials/createTest.ts";
 import createComponent from "./partials/createComponent.ts";
 import { parse } from "https://deno.land/std/flags/mod.ts";
 import getIcons from "./partials/getIcons.ts";
-import createStory from "./partials/createStory/index.ts";
+import createStory from "./partials/createStory/mod.ts";
 
 // Extract command line arguments passed when running command
 const { _: args } = parse(Deno.args);
