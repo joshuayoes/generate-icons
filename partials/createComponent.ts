@@ -1,8 +1,7 @@
 import { writeFileStr, exists } from "https://deno.land/std/fs/mod.ts";
 
 const generateContent = (filename: string) =>
-  `
-import React from "react";
+  `import React from "react";
 
 const ${filename}: React.FC = (props) => {
   const { className, width, color } = props;
@@ -32,7 +31,7 @@ const createComponent = async (filename: string, outputPath: string) => {
     console.log(`✍️  Writing <${filename} /> file...`);
 
     await writeFileStr(outputPath, component).then(() => {
-      console.log(`✅ <${filename} /> written!`);
+      console.log(`✅ <${filename} /> component written at ${outputPath}`);
     });
   } catch (error) {
     console.error("🙈 Something went wrong!");
